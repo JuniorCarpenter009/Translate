@@ -26,3 +26,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/languageDemo', 'App\Http\Controllers\HomeController@languageDemo');
 
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\HomeController;
+ 
+Route::get('/greeting/{locale}', function ($lang) {
+    if (! in_array($lang, ['en', 'es', 'fr'])) {
+        abort(400);
+    }
+ 
+    App::setLocale($lang);
+ 
+    //
+});
